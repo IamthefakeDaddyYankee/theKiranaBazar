@@ -1,0 +1,66 @@
+<div class="lists">
+ 
+
+    <br/>
+
+    <form (submit)="stockAvail()">                  <!--Filter creation that depends upon stock availability. This is for Yes -->
+        <label for="stock">Filter by stock:</label>
+        
+        <br><br>
+        <input type="submit" value="Available"  style="padding: 2px 15px 2px 15px; background-color: #A2F1F3;">
+      </form>
+
+      <form (submit)="stockAvailNo()">            <!--Filter creation that depends upon stock availability. This is for No -->
+        
+        <input type="submit" value="Not Available"  style="padding: 2px 15px 2px 15px; background-color: #A2F1F3;">
+      </form>
+    
+
+      <br/>
+      <br/>
+                              <!--List is shown here, list items goes are checked one by one and thr below atteibutes of list are printed -->
+
+    <div *ngFor="let list of lists; let i = index;" class="list {{ (list.completed ? 'done' : '') }}">
+        <div class="id">{{i+1}}.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class="content" (click)="toggleDone(i)">{{list.content}}</div>
+        <div class="content" (click)="toggleDone(i)">{{list.description}}</div>
+        <div class="content" (click)="toggleDone(i)">{{list.date}}</div>
+        <button class="delete" (click)="EditList(i)">Edit</button>
+        <button class="delete" (click)="deleteList(i)">Delete</button>
+    </div>
+
+    <form (submit)="addList()">         <!--Form to input the list items -->
+        <input 
+			type="text"
+			name="inputList"
+			placeholder="Item name..."
+			class="list-input"
+			[(ngModel)]="inputList"
+		/>                               <!--These below are seperate inout fields-->
+        <input                                
+        type="text"
+        name="inputList"
+        placeholder="Item description..."
+        class="list-input"
+        [(ngModel)]="inputListDescription"
+    />
+        <input 
+         type="text"
+         name="inputList"
+         placeholder="Date of buying..."
+         class="list-input"
+         [(ngModel)]="inputListDate"
+          />
+         <input  
+         type="text"
+         name="inputList"
+         placeholder="Stock...If available- type Yes...If not type No"
+           class="list-input"
+           [(ngModel)]="inputListStock"
+          />
+        <input type="submit" value="Add this new item in list" class="list-submit" />
+
+       
+    </form>
+ 
+   </div>
