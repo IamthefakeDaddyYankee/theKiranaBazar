@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "serve-ca38c": {
+      "hosting": {
+        "serve": [
+          "serve-ca38c"
+        ]
+      }
+    }
+  }
+}
